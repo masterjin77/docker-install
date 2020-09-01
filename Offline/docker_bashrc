@@ -1,0 +1,64 @@
+# User specific aliases and functions
+
+##-----------------------------------------------------------------------
+##  - Setting Message
+##-----------------------------------------------------------------------
+echo "---------------------------------------------------------------------"
+echo "                 << Setting Root Environment >>                      "
+#echo "    -  file path : /tools/env/std/root_bashrc/std_bashrc             "
+echo "---------------------------------------------------------------------"
+echo "  [ My Host Name : $HOSTNAME   ] "
+#echo "  [ My REMOTE IP : $REMOTEHOST ] "
+echo "---------------------------------------------------------------------"
+
+##-----------------------------------------------------------------------
+##  - Prompt
+##-----------------------------------------------------------------------
+echo "   1. Prompt Setting "
+export PS1="[\[\033[33;1m\]\u\[\033[31;1m\]@\[\033[34;1m\]\h\[\033[32;1m\] \w\[\033[37;1m\]]# "
+
+##-----------------------------------------------------------------------
+##  - Firefox
+##-----------------------------------------------------------------------
+echo "   2. Alias Setting - Firefox"
+alias fx='/tools/env/util/firefox/firefox &'
+#alias fxj='/tools/env/util/firefox/firefox -p jeonsj1 &'
+
+##-----------------------------------------------------------------------
+##  - Docker
+##-----------------------------------------------------------------------
+#pattern1='docker*'
+
+#if [[ $HOSTNAME == $pattern1 ]]; then
+
+  echo "   3. Alias Setting - Docker "
+  # docker command
+  alias dkps='docker ps -a'
+  alias dkim='docker images'
+  alias dkin='docker inspect'
+  alias dkip='docker inspect -f "{{ .NetworkSettings.IPAddress }}" '
+  alias dkex='docker exec -it'
+
+  alias exrm='docker rm $(docker ps --filter status=exited -a -q)'
+
+  ## Prometheus reload command   :1 = prometheus PID
+  alias prom_reload='docker exec monitoring_prometheus_1 sh -c "kill -HUP 1"'
+
+  # docker network command
+  alias dknw='docker network ls'
+
+  # docker registry command
+  #alias drls='curl -X GET http://docker00:5000/v2/_catalog'
+
+  # docker-compose command
+  alias dcps='docker-compose ps'
+  alias dcup='docker-compose up -d'
+  alias dcdown='docker-compose down'
+  alias dcstop='docker-compose stop'
+  alias dclogs='docker-compose logs'
+  alias dcrun='docker-compose run'
+
+#fi
+
+echo "---------------------------------------------------------------------"
+
